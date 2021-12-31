@@ -1,0 +1,24 @@
+enable
+configure terminal
+interface f1/0
+ip address 193.136.212.129 255.255.255.248
+no shutdown 
+end
+
+enable
+show running-config
+configure terminal
+interface e0/0
+ip address 193.136.212.137 255.255.255.248
+no shutdown 
+end
+
+enable
+conf t
+ip multicast-routing
+interface Ethernet 0/0
+ip pim sparse-dense-mode
+exit
+interface FastEthernet 1/0
+ip pim sparse-dense-mode
+end

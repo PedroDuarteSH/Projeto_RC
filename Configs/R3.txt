@@ -1,0 +1,33 @@
+enable
+show running-config
+configure terminal
+
+access-list 30 permit 10.90.0.0 0.0.0.255
+ip nat inside source list 30 interface Ethernet0/0 overload
+
+ip nat inside source static tcp 10.90.0.2 9000 193.136.212.131 9000
+ip nat inside source static udp 10.90.0.2 9876 193.136.212.131 9876
+
+configure terminal
+interface f1/0
+ip address 10.90.0.1 255.255.255.0
+no shutdown
+ip nat inside
+end
+
+configure terminal
+interface e0/0
+ip address 193.136.212.131 255.255.255.248
+no shutdown
+ip nat outside
+end
+
+enable
+conf t
+ip multicast-routing
+interface Ethernet 0/0
+ip pim sparse-dense-mode
+exit
+interface FastEthernet 1/0
+ip pim sparse-dense-mode
+end

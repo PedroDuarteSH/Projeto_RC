@@ -1,0 +1,4 @@
+adriana 193.136.212.147 adriana no no yes
+duarte 193.136.212.138 duarte yes no yes
+guilherme 193.136.212.139 guilherme no yes yes
+vasco 193.136.212.146 vasco yes yes yes
